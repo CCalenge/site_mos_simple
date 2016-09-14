@@ -6,10 +6,6 @@ ini_set ('display_error',1);
 
 // création de variables avec les $_POST :
 
-// pour les membres
-$login = $_POST['login'];
-$mdp = $_POST['mdp'];
-
 // pour les inscriptions
 $pseudo = $_POST['pseudo'];
 $passwd = $_POST['passwd'];
