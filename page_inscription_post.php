@@ -12,27 +12,6 @@ $passwd = $_POST['passwd'];
 $confPasswd = $_POST['confPasswd'];
 $email = $_POST['email'];
 
-// REQUETE FORMULAIRE DE CONNEXION
-
-// Vérifier que les champs du formulaire des membres ont été renseignés
-
-if (!isset($login) || empty($login))
-{
-  echo 'Veuillez entrer votre pseudo&#8239!<br/>';
-}
-
-if (!isset($mdp) || empty($mdp))
-{
-  echo 'Veuillez entrer votre mot de passe&#8239!<br/>';
-}
-
-else {
-  // Vérification dans la base de données
-  # code...
-}
-// Si le login est faux : êtes-vous inscrit ?
-
-// direction vers accueil membres.
 
 
 // REQUETE FORMULAIRE D'INSCRIPTION
@@ -57,6 +36,22 @@ if (!isset($confPasswd) || empty($confPasswd))
 if (!isset($email) || empty($email))
 {
   echo 'Veuillez entrer une adresse mail&#8239!<br/>';
+}
+
+// vérification de la validité de l'adresse mail
+if (isset($email))
+
+{
+    $email = htmlspecialchars($email); // On rend inoffensives les balises HTML que le visiteur a pu rentrer
+
+    if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $email))
+    {
+        echo 'L\'adresse ' . $email . ' est <strong>valide</strong> !';
+    }
+    else
+    {
+        echo 'L\'adresse ' . $email . ' n\'est pas valide, recommencez !';
+    }
 }
 
 else {
