@@ -24,13 +24,16 @@ if (!isset($mdp) || empty($mdp))
 }
 
 else {
+
   // Vérification dans la base de données
   # code...
+
+    header('Location:page_profil.php');
 }
 // Si le login est faux : êtes-vous inscrit ?
 
 // direction vers accueil membres.
 
-header('Location:page_profil.php');
+
 
  ?>

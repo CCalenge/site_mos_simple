@@ -42,23 +42,25 @@ if (!isset($email) || empty($email))
 if (isset($email))
 
 {
-    $email = htmlspecialchars($email); // On rend inoffensives les balises HTML que le visiteur a pu rentrer
+  $email = htmlspecialchars($email); // On rend inoffensives les balises HTML que le visiteur a pu rentrer
 
-    if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $email))
-    {
-        echo 'L\'adresse ' . $email . ' est <strong>valide</strong> !';
-    }
-    else
-    {
-        echo 'L\'adresse ' . $email . ' n\'est pas valide, recommencez !';
-    }
+  if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $email))
+  {
+    echo 'L\'adresse ' . $_POST['mail'] . ' est <strong>valide</strong> !';
+  }
+  else
+  {
+    echo 'L\'adresse ' . $_POST['mail'] . ' n\'est pas valide, recommencez !';
+
+
+  }
 }
 
 else {
   // hachage du mot de passe
   $pass_hache = sha1('gz'.$passwd);
 
-// insérer les données dans la base de données
+  // insérer les données dans la base de données
 
   $req = $bdd->prepare('INSERT INTO membres (pseudo, pass, email, date_inscription)
   VALUES (:pseudo,:pass,:email, CURDATE())');
@@ -67,15 +69,15 @@ else {
     'pass'=> $pass_hache,
     'email'=> $email));
 
-  $req->closeCursor();
+    $req->closeCursor();
 
-  header('Location:page_profil.php');
-}
-
-
+    header('Location:page_profil.php');
+  }
 
 
 
 
 
- ?>
+
+
+  ?>
